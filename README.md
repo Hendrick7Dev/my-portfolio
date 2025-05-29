@@ -1,36 +1,165 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfólio Profissional
 
-## Getting Started
+Um portfólio profissional moderno e responsivo desenvolvido com Next.js 15, TypeScript, React Server Components e Tailwind CSS.
 
-First, run the development server:
+![Versão](https://img.shields.io/badge/versão-1.0.0-blue)
+![Next.js](https://img.shields.io/badge/Next.js-15.3.2-black)
+![React](https://img.shields.io/badge/React-19.0.0-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0.0-38B2AC)
+![Licença](https://img.shields.io/badge/licença-MIT-green)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 📋 Índice
+
+- [Visão Geral](#-visão-geral)
+- [Funcionalidades](#-funcionalidades)
+- [Tecnologias](#-tecnologias)
+- [Arquitetura](#-arquitetura)
+- [Internacionalização](#-internacionalização)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Começando](#-começando)
+- [Personalização](#-personalização)
+- [Implantação](#-implantação)
+- [Licença](#-licença)
+
+## 🌟 Visão Geral
+
+Este projeto é um portfólio profissional dinâmico com suporte a múltiplos idiomas, otimizado para performance e SEO. Utiliza os mais recentes recursos do Next.js 15, incluindo React Server Components para renderização eficiente no servidor e App Router para roteamento.
+
+## ✨ Funcionalidades
+
+- **Design Responsivo**: Layout adaptável para todos os tamanhos de tela
+- **Internacionalização**: Suporte completo a 3 idiomas (Português, Inglês e Espanhol)
+- **Otimização para SEO**: Metadados específicos para cada idioma
+- **Tema Escuro**: Interface elegante com tema escuro e elementos visuais modernos
+- **Arquitetura Moderna**: Separação entre componentes de servidor e cliente
+- **Performance Otimizada**: Renderização no servidor para carregamento rápido
+
+## 🚀 Tecnologias
+
+- **[Next.js 15](https://nextjs.org/)**: Framework React com suporte a SSR, SSG e RSC
+- **[React 19](https://react.dev/)**: Biblioteca para construção de interfaces
+- **[TypeScript](https://www.typescriptlang.org/)**: Superset tipado de JavaScript
+- **[Tailwind CSS 4](https://tailwindcss.com/)**: Framework CSS utilitário
+- **[Lucide React](https://lucide.dev/)**: Conjunto de ícones para React
+- **[Radix UI](https://www.radix-ui.com/)**: Componentes acessíveis e sem estilo
+
+## 🏗️ Arquitetura
+
+O projeto utiliza uma arquitetura moderna baseada em:
+
+- **App Router**: Estrutura de roteamento baseada em pastas do Next.js
+- **React Server Components**: Componentes renderizados no servidor para melhor performance
+- **Client Components**: Componentes interativos marcados com "use client"
+- **Middleware**: Redirecionamento baseado em idioma e detecção de preferências do usuário
+- **Context API**: Gerenciamento de estado para idiomas e temas
+
+## 🌐 Internacionalização
+
+O sistema de internacionalização (i18n) foi implementado usando uma abordagem de "scopedI18n", que permite:
+
+- **Carregamento Eficiente**: Cada componente solicita apenas as traduções que precisa
+- **Suporte a Server Components**: Implementação compatível com RSC
+- **Detecção de Idioma**: Detecção automática do idioma preferido do navegador
+- **Troca de Idioma**: Interface para o usuário alterar o idioma em tempo real
+
+### Idiomas Suportados
+
+- 🇧🇷 Português (Brasil) - padrão
+- 🇺🇸 Inglês (EUA)
+- 🇪🇸 Espanhol
+
+## 📁 Estrutura do Projeto
+
+```
+my-portfolio/
+├── public/               # Arquivos estáticos
+├── src/                  # Código fonte
+│   ├── app/              # Estrutura de roteamento
+│   │   ├── [locale]/     # Rotas com parâmetro de idioma
+│   │   │   ├── page.tsx  # Página principal com locale
+│   │   │   └── layout.tsx # Layout específico para locale
+│   │   ├── components/   # Componentes React
+│   │   │   ├── client/   # Componentes do cliente (interativos)
+│   │   │   ├── server/   # Componentes do servidor (estáticos)
+│   │   │   ├── portfolio/ # Componentes específicos do portfólio
+│   │   │   └── ui/       # Componentes de UI reutilizáveis
+│   │   ├── hooks/        # Hooks personalizados
+│   │   │   ├── use-scoped-i18n.ts # Hook para internacionalização
+│   │   │   └── use-locale.ts # Hook para gerenciar o idioma
+│   │   ├── locales/      # Traduções e configuração de i18n
+│   │   │   ├── index.ts  # Exportações e tipos
+│   │   │   └── lang/     # Arquivos de idioma
+│   │   │       ├── en.ts # Traduções em inglês
+│   │   │       ├── es.ts # Traduções em espanhol
+│   │   │       └── ptBR.ts # Traduções em português
+│   │   ├── providers/    # Providers de contexto
+│   │   │   └── locale-provider.tsx # Provider de idioma
+│   │   └── middleware.ts # Middleware para redirecionamento de idioma
+│   ├── tailwind.config.js # Configuração do Tailwind CSS
+│   └── next.config.js     # Configuração do Next.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚦 Começando
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Pré-requisitos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js 20.x ou superior
+- npm ou yarn
 
-## Learn More
+### Instalação
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/my-portfolio.git
+cd my-portfolio
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Instale as dependências
+npm install
+# ou
+yarn
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Desenvolvimento
 
-## Deploy on Vercel
+```bash
+# Inicie o servidor de desenvolvimento
+npm run dev
+# ou
+yarn dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Acesse [http://localhost:3000](http://localhost:3000) para ver o projeto em execução.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Personalização
+
+### Conteúdo
+
+1. **Informações Pessoais**: Edite os dados do portfólio em `src/app/[locale]/page.tsx`
+2. **Traduções**: Modifique os arquivos de idioma em `src/locales/lang/`
+3. **Links**: Atualize os links de redes sociais em `src/components/client/client-wrapper.tsx`
+
+### Estilo
+
+1. **Cores**: Personalize o esquema de cores editando as classes Tailwind nos componentes
+2. **Fontes**: Modifique as fontes em `tailwind.config.js`
+3. **Layout**: Ajuste a estrutura de layout em `src/app/[locale]/page.tsx`
+
+## 🚀 Implantação
+
+O projeto está pronto para implantação em plataformas como Vercel, Netlify ou qualquer provedor que suporte Next.js.
+
+```bash
+# Construa para produção
+npm run build
+# ou
+yarn build
+
+# Inicie o servidor de produção
+npm start
+# ou
+yarn start
+```
+
+## 📄 Licença
+
+Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE](LICENSE) para obter detalhes.
