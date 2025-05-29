@@ -16,6 +16,7 @@ Um portfólio profissional moderno e responsivo desenvolvido com Next.js 15, Typ
 - [Arquitetura](#-arquitetura)
 - [Internacionalização](#-internacionalização)
 - [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Atualizações Recentes](#-atualizações-recentes)
 - [Começando](#-começando)
 - [Personalização](#-personalização)
 - [Implantação](#-implantação)
@@ -31,7 +32,7 @@ Este projeto é um portfólio profissional dinâmico com suporte a múltiplos id
 - **Internacionalização**: Suporte completo a 3 idiomas (Português, Inglês e Espanhol)
 - **Otimização para SEO**: Metadados específicos para cada idioma
 - **Tema Escuro**: Interface elegante com tema escuro e elementos visuais modernos
-- **Arquitetura Moderna**: Separação entre componentes de servidor e cliente
+- **Arquitetura Moderna**: Separação clara entre componentes de servidor, cliente e UI pura
 - **Performance Otimizada**: Renderização no servidor para carregamento rápido
 
 ## 🚀 Tecnologias
@@ -50,6 +51,7 @@ O projeto utiliza uma arquitetura moderna baseada em:
 - **App Router**: Estrutura de roteamento baseada em pastas do Next.js
 - **React Server Components**: Componentes renderizados no servidor para melhor performance
 - **Client Components**: Componentes interativos marcados com "use client"
+- **UI Components**: Componentes puramente visuais, sem lógica de negócio
 - **Middleware**: Redirecionamento baseado em idioma e detecção de preferências do usuário
 - **Context API**: Gerenciamento de estado para idiomas e temas
 
@@ -72,32 +74,57 @@ O sistema de internacionalização (i18n) foi implementado usando uma abordagem 
 
 ```
 my-portfolio/
-├── public/               # Arquivos estáticos
-├── src/                  # Código fonte
-│   ├── app/              # Estrutura de roteamento
-│   │   ├── [locale]/     # Rotas com parâmetro de idioma
-│   │   │   ├── page.tsx  # Página principal com locale
+├── public/                # Arquivos estáticos
+├── src/                   # Código fonte
+│   ├── app/               # Estrutura de roteamento
+│   │   ├── [locale]/      # Rotas com parâmetro de idioma
+│   │   │   ├── page.tsx   # Página principal com locale
 │   │   │   └── layout.tsx # Layout específico para locale
-│   │   ├── components/   # Componentes React
-│   │   │   ├── client/   # Componentes do cliente (interativos)
-│   │   │   ├── server/   # Componentes do servidor (estáticos)
-│   │   │   ├── portfolio/ # Componentes específicos do portfólio
-│   │   │   └── ui/       # Componentes de UI reutilizáveis
-│   │   ├── hooks/        # Hooks personalizados
-│   │   │   ├── use-scoped-i18n.ts # Hook para internacionalização
-│   │   │   └── use-locale.ts # Hook para gerenciar o idioma
-│   │   ├── locales/      # Traduções e configuração de i18n
-│   │   │   ├── index.ts  # Exportações e tipos
-│   │   │   └── lang/     # Arquivos de idioma
-│   │   │       ├── en.ts # Traduções em inglês
-│   │   │       ├── es.ts # Traduções em espanhol
-│   │   │       └── ptBR.ts # Traduções em português
-│   │   ├── providers/    # Providers de contexto
-│   │   │   └── locale-provider.tsx # Provider de idioma
-│   │   └── middleware.ts # Middleware para redirecionamento de idioma
-│   ├── tailwind.config.js # Configuração do Tailwind CSS
-│   └── next.config.js     # Configuração do Next.js
+│   ├── components/        # Componentes React
+│   │   ├── client/        # Componentes do cliente (interativos)
+│   │   ├── server/        # Componentes do servidor (estáticos)
+│   │   ├── portfolio/     # Componentes específicos do portfólio com lógica
+│   │   └── ui/            # Componentes de UI básicos
+│   ├── ui/                # Componentes UI puramente visuais
+│   │   └── portfolio/     # Componentes visuais do portfólio 
+│   ├── hooks/             # Hooks personalizados
+│   │   ├── server-i18n.ts  # Hook para i18n no servidor
+│   │   ├── use-scoped-i18n.ts # Hook para i18n no cliente
+│   │   └── use-locale.ts  # Hook para gerenciar o idioma
+│   ├── locales/           # Traduções e configuração de i18n
+│   │   ├── index.ts       # Exportações e tipos
+│   │   └── lang/          # Arquivos de idioma
+│   │       ├── en.ts      # Traduções em inglês
+│   │       ├── es.ts      # Traduções em espanhol
+│   │       └── ptBR.ts    # Traduções em português
+│   ├── providers/         # Providers de contexto
+│   ├── types/             # Tipos TypeScript
+│   └── middleware.ts      # Middleware para redirecionamento de idioma
 ```
+
+## 🔄 Atualizações Recentes
+
+### Refatoração da Estrutura de Componentes (Commit 2)
+
+1. **Reorganização dos Componentes**:
+   - Movidos componentes puramente visuais para `src/ui/portfolio/`
+   - Mantidos componentes com lógica de negócio em `src/components/portfolio/`
+
+2. **Consolidação de Componentes**:
+   - Unificado `ProjectCard` e `ProjectItem` em um único componente flexível
+   - O componente agora suporta modo interativo (cliente) e estático (servidor)
+
+3. **Middleware Simplificado**:
+   - Removida duplicação de middleware
+   - Consolidada toda a lógica de redirecionamento baseada em idioma
+
+4. **Correções de Tipagem**:
+   - Padronização dos nomes de locales (`ptBR`, `en`, `es`)
+   - Melhorias na tipagem de componentes
+
+5. **Outros Ajustes**:
+   - Criado barril de exportações para componentes UI
+   - Implementadas funções de interação provisórias
 
 ## 🚦 Começando
 
@@ -110,7 +137,7 @@ my-portfolio/
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/my-portfolio.git
+git clone https://github.com/Hendrick7Dev/my-portfolio.git
 cd my-portfolio
 
 # Instale as dependências
